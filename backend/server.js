@@ -23,31 +23,40 @@ app.post('/api', (req, res) => {
     console.log("prompt ==> ", prompt);
 
     axios.get(url).then(async (response) => {
+        console.log("hi");
         const html = response.data;
         const text = cheerio.load(html).text();
+        var src = text
+        if (text.length > 8000) {
+            src = text.slice(0, 7999);
+        }
+        console.log("==> hi2");
 
-        const full_prompt = prompt
-                            + "\nAnswer this question/prompt within 50 tokens using the information given in the source below as the basis for all truth and facts.\n\n" 
-                            + text;
-
-        const resp = await openai.createCompletion(
-            {
-              model: "text-davinci-003",
-              prompt: full_prompt,
-              max_tokens: 100
-            },
-            {
-                timeout: NaN,
+        const full_prompt = prompt + "\nAnswer this question/prompt within 50 tokens using the information given in the source below as the basis for all truth and facts.\n\n" + src;
+        
+        try {
+            const resp = await openai.createCompletion(
+                {
+                  model: "text-davinci-003",
+                  prompt: full_prompt,
+                  max_tokens: 100
+                }
+            );
+            console.log("response ==>", resp.data.choices[0].text);
+            res.send({response: resp.data.choices[0].text});
+          } catch (error) {
+            if (error.response) {
+              console.log(error.response.status);
+              console.log(error.response.data);
+            } else {
+              console.log(error.message);
             }
-        );
+          }
 
-        console.log("response ==>", resp.data.choices[0].text)
-
-        return res.status(200).json({
-            success: true,
-            response:  resp.data.choices[0].text,
-          });
-        // res.send({response: resp.data.choices[0].text});
+        // return res.status(200).json({
+        //     success: true,
+        //     response:  resp.data.choices[0].text,
+        //   });
     })
     .catch(function(error) {
         console.log('Error:', error.message);
