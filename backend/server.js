@@ -52,6 +52,7 @@ app.post('/api', (req, res) => {
     })
     .catch(function(error) {
         console.log('Error:', error.message);
+        console.log("failed to grab text")
     });
 })
 
