@@ -55,8 +55,8 @@ app.post('/api', (req, res) => {
     });
 })
 
-app.get('/api', (req, res) => {
-    res.send("hi");
+app.get('/', (req, res) => {
+    res.send("Server is up");
 })
 
 const PORT = process.env.PORT || 3001
