@@ -50,16 +50,14 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        PromptScrapr
+        <span className="first">Prompt</span><span className="second">Scrapr</span>
       </header>
       <div class="container">
-        <div class="input">
-          <form onSubmit={handleSubmit}>
-            <input class="url-search" type="url" placeholder="URL here..." value={url} onChange={handleUrlChange} required/>
-            <input class="prompt-search" type="text" placeholder="Prompt here..." value={prompt} onChange={handlePromptChange} required/>
-            <input type="submit" value="Submit"/>
-          </form>
-        </div>
+        <form onSubmit={handleSubmit} class="input">
+          <input class="url search" type="url" placeholder="URL here..." value={url} onChange={handleUrlChange} required/>
+          <input class="prompt search" type="text" placeholder="Prompt here..." value={prompt} onChange={handlePromptChange} required/>
+          <input class="submit" type="submit" value="Submit"/>
+        </form>
         <div class="output">
           { resp }
         </div>

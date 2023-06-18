@@ -1,7 +1,60 @@
 .App {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  color: white;
 }
 
 .App-header {
+  font-weight: bold;
+  font-size: 32px;
+  margin: 10px;
+  .first {
+    color: #36bf78;
+  }
+  .second {
+    color: #a9dee8;
+  }
+}
 
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  .input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  
+    .search {
+      width: 70%;
+      height: 25px;
+      border-radius: 10px;
+      margin: 10px;
+      border: 3px solid #a9dee8;
+    }
+
+    .submit {
+      border: 3px solid #36bf78;
+      border-radius: 5px;
+    }
+  }
+
+  .output {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    background-color: white;
+    color: black;
+  }
 }

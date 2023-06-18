@@ -1,7 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const axios = require('axios');
-let cheerio = require('cheerio');
+const cheerio = require('cheerio');
 const app = express() // an express application
 
 const { Configuration, OpenAIApi } = require("openai");
@@ -22,8 +22,7 @@ app.post('/api', (req, res) => {
     console.log("url ==> ", url);
     console.log("prompt ==> ", prompt);
 
-    axios.get(url) // issues connecting
-    .then(async (response) => {
+    axios.get(url).then(async (response) => {
         const html = response.data;
         const text = cheerio.load(html).text();
 
