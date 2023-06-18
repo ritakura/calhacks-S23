@@ -59,5 +59,6 @@
     border-radius: 10px;
     background-color: white;
     color: black;
+    border: 3px solid #a9dee8;
   }
 }

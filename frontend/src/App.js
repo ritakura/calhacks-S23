@@ -7,7 +7,7 @@ import './App.css';
 function App() {
   const [url, setUrl] = useState('');
   const [prompt, setPrompt] = useState('');
-  const [resp, setResp] = useState('');
+  const [resp, setResp] = useState('Response here...');
 
   const handleUrlChange = (event) => {
     setUrl(event.target.value);
