@@ -22,7 +22,7 @@ app.post('/api', (req, res) => {
     console.log("url ==> ", url);
     console.log("prompt ==> ", prompt);
 
-    axios.get(url)
+    axios.get(url) // issues connecting
     .then(async (response) => {
         const html = response.data;
         const text = cheerio.load(html).text();
